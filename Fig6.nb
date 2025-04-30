@@ -1,0 +1,182 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6207,        174]
+NotebookOptionsPosition[      5857,        160]
+NotebookOutlinePosition[      6253,        176]
+CellTagsIndexPosition[      6210,        173]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "Calculation", " ", "of", " ", "telegraph", " ", "distribution", " ", 
+      "under", " ", "beta"}], "-", 
+     RowBox[{"distributed", " ", "p_cap"}]}], " ", "*)"}], "Subtitle"], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Range", " ", "of", " ", "fon"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"edge1", "=", 
+     RowBox[{"Range", "[", 
+      RowBox[{"0.01", ",", "1", ",", "0.01"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Range", " ", "of", " ", "N_sigma"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"edge2", "=", 
+     RowBox[{"10", "^", 
+      RowBox[{"Range", "[", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "3.1", ",", "0.02"}], "]"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Truncation", " ", "for", " ", "probability"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Bins", "=", "50"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Iteration", " ", "for", " ", "each", " ", "pair", " ", "of", " ", "fon", 
+     " ", "and", " ", "N_sigma"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"fon", "=", 
+          RowBox[{"edge1", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"N\[Sigma]", "=", 
+          RowBox[{"edge2", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"son", "=", 
+          RowBox[{"fon", "*", "N\[Sigma]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"soff", "=", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", "fon"}], ")"}], "*", "N\[Sigma]"}]}], ";"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Calculate", " ", "probability", " ", "via", " ", "Taylor", " ", 
+          "expansion", " ", 
+          RowBox[{"(", 
+           RowBox[{"Eq", ".", " ", 
+            RowBox[{"(", "29", ")"}]}], ")"}]}], "*)"}], 
+        "\[IndentingNewLine]", "GG1"}], "=", 
+       RowBox[{
+        RowBox[{"HypergeometricPFQ", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a", ",", "son"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"a", "+", "b"}], ",", 
+            RowBox[{"soff", "+", "son"}]}], "}"}], ",", 
+          RowBox[{"rho", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", "1"}], "+", "z"}], ")"}]}]}], "]"}], "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"a", "\[Rule]", "60"}], ",", 
+          RowBox[{"b", "\[Rule]", "140"}], ",", 
+          RowBox[{"rho", "\[Rule]", "15"}]}], "}"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"seriesExpr", "=", 
+       RowBox[{"Series", "[", 
+        RowBox[{"GG1", ",", 
+         RowBox[{"{", 
+          RowBox[{"z", ",", "0", ",", "Bins"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"v", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "1", ",", "Bins"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"k", "=", "2"}], ",", 
+        RowBox[{"k", "\[LessEqual]", "Bins"}], ",", 
+        RowBox[{"k", "++"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"v", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], "=", 
+          RowBox[{"SeriesCoefficient", "[", 
+           RowBox[{"seriesExpr", ",", 
+            RowBox[{"{", 
+             RowBox[{"z", ",", "0", ",", 
+              RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}]}], ";"}]}], "]"}], 
+      ";", 
+      RowBox[{
+       RowBox[{"v", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "=", 
+       RowBox[{"GG1", "/.", 
+        RowBox[{"z", "\[Rule]", "0"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Export", " ", "distribution", " ", "into", " ", "CSV", " ", "file"}], 
+       " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"fileName", "=", 
+       RowBox[{"\"\<Desktop/beta-Gamma/beta60140_fon\>\"", " ", "<>", " ", 
+        RowBox[{"ToString", "[", "i", "]"}], " ", "<>", " ", "\n", "    ", 
+        "\"\<_Ns\>\"", " ", "<>", " ", 
+        RowBox[{"ToString", "[", "j", "]"}], " ", "<>", " ", 
+        "\"\<.csv\>\""}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{"fileName", ",", 
+        RowBox[{"N", "[", "v", "]"}]}], "]"}], ";"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "edge1", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", 
+       RowBox[{"Length", "[", "edge2", "]"}]}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.9549827616531343`*^9, 3.9549827656666183`*^9}, {
+  3.954982812551653*^9, 3.954983006111257*^9}, {3.9550103990388927`*^9, 
+  3.9550104331401987`*^9}, {3.9550105091153*^9, 3.955010562888427*^9}, {
+  3.955010597963777*^9, 3.955010779284082*^9}, {3.955010818587552*^9, 
+  3.955010837068173*^9}, {3.9550109297251883`*^9, 
+  3.955010933609253*^9}},ExpressionUUID->"8c169741-6450-4f4a-b059-\
+ee438baabd54"]
+},
+WindowSize->{808, 733},
+WindowMargins->{{294, Automatic}, {Automatic, 7}},
+FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"10f601ae-b39f-4aa6-a991-8da1b107a471"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5295, 138, 530, "Input",ExpressionUUID->"8c169741-6450-4f4a-b059-ee438baabd54"]
+}
+]
+*)
+
