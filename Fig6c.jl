@@ -110,4 +110,5 @@ for i in 1:length(edge1)
     end
 end
 
-contourf(log10.(edge2),edge1[1:end],bic1,color=:viridis,levels=2, linewidth=0,xlabel="log10(Nσ)",ylabel="fon",title="beta(60,140)_nc=$(nc)")
+using StatsPlots
+p=contourf(log10.(edge2),edge1[1:end],bic1,color=:viridis,levels=2, linewidth=0,xlabel="log10(Nσ)",ylabel="fon",title="beta(60,140)_nc=$(nc)")
