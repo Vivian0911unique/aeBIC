@@ -9,6 +9,7 @@ This repository contains the Julia code and generated plots for the paper [1], w
 - LinearAlgebra
 - StatsBase v0.33.21
 - StaticArrays v1.9.3
+- Optim v1.9.4
 - Random 
 
 **File description:**
