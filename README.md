@@ -11,7 +11,7 @@ This repository contains the Julia code and generated plots for the paper [1], w
 - StaticArrays v1.9.3
 - Optim v1.9.4
 - Random
-- Mathematica 12.0
+- Mathematica v13.2.1.0
 
 **File description:**
 
