@@ -1,4 +1,5 @@
-# From Noise to Models to Numbers: Evaluating Negative Binomial Approximations and Parameter Estimations in Single-Cell RNA-seq
+# From Noise to Models to Numbers: Evaluating Negative Binomial Models and Parameter Estimations in Single-Cell RNA-seq
+
 This repository contains the Julia code and generated plots for the paper [1], where the corresponding data are deposited at xx
 
 **Requirements:**
