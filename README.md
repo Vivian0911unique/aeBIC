@@ -26,4 +26,4 @@ This repository contains the Julia code and generated plots for the paper [1].
 
 **Reference:**
 
-- [1] Y. Wang, Z. Shu, Z. Cao, R. Grima. [*From Noise to Models to Numbers: Evaluating Negative Binomial Models and Parameter Estimations in Single-Cell RNA-seq*](https://www.biorxiv.org/content/10.1101/2025.05.05.652189v1)
+- [1] Y. Wang, Z. Shu, Z. Cao, R. Grima. [*From Noise to Models to Numbers: Evaluating Negative Binomial Models and Parameter Estimations in Single-Cell RNA-seq*](https://www.biorxiv.org/content/10.1101/2025.05.05.652189v1).
