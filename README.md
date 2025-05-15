@@ -14,6 +14,7 @@ This repository contains the Julia code and generated plots for the paper [1].
 - Random
 - Mathematica v13.2.1.0
 - StatsPlots v0.15.7
+- Distributions v0.25.108
 
 **File description:**
 
