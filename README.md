@@ -13,6 +13,7 @@ This repository contains the Julia code and generated plots for the paper [1].
 - Optim v1.9.4
 - Random
 - Mathematica v13.2.1.0
+- StatsPlots v0.15.7
 
 **File description:**
 
